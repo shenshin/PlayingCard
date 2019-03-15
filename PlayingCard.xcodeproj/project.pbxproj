@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		784FEEAF223B3D98008764A5 /* PlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784FEEAE223B3D98008764A5 /* PlayingCard.swift */; };
+		784FEEB2223B4EBB008764A5 /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784FEEB1223B4EBB008764A5 /* PlayingCardDeck.swift */; };
 		78F10DDF2239AD0C001A3A47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F10DDE2239AD0C001A3A47 /* AppDelegate.swift */; };
 		78F10DE12239AD0C001A3A47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F10DE02239AD0C001A3A47 /* ViewController.swift */; };
 		78F10DE42239AD0D001A3A47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78F10DE22239AD0D001A3A47 /* Main.storyboard */; };
 		78F10DE62239AD11001A3A47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F10DE52239AD11001A3A47 /* Assets.xcassets */; };
+		78F98C1A223B59E9004A08B0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F98C19223B59E8004A08B0 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		784FEEAE223B3D98008764A5 /* PlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCard.swift; sourceTree = "<group>"; };
+		784FEEB1223B4EBB008764A5 /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
 		78F10DDB2239AD0C001A3A47 /* PlayingCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayingCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F10DDE2239AD0C001A3A47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78F10DE02239AD0C001A3A47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		78F10DE32239AD0D001A3A47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78F10DE52239AD11001A3A47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78F10DEA2239AD11001A3A47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78F98C19223B59E8004A08B0 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 				78F10DE02239AD0C001A3A47 /* ViewController.swift */,
 				78F10DE22239AD0D001A3A47 /* Main.storyboard */,
 				784FEEAE223B3D98008764A5 /* PlayingCard.swift */,
+				78F98C19223B59E8004A08B0 /* Extensions.swift */,
+				784FEEB1223B4EBB008764A5 /* PlayingCardDeck.swift */,
 				78F10DE52239AD11001A3A47 /* Assets.xcassets */,
 				78F10DEA2239AD11001A3A47 /* Info.plist */,
 			);
@@ -160,7 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78F98C1A223B59E9004A08B0 /* Extensions.swift in Sources */,
 				78F10DE12239AD0C001A3A47 /* ViewController.swift in Sources */,
+				784FEEB2223B4EBB008764A5 /* PlayingCardDeck.swift in Sources */,
 				784FEEAF223B3D98008764A5 /* PlayingCard.swift in Sources */,
 				78F10DDF2239AD0C001A3A47 /* AppDelegate.swift in Sources */,
 			);
