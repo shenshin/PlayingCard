@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ales Shenshin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension Int {
     var arc4random: Int {
@@ -26,5 +26,30 @@ extension Collection {
     }
     func oneAndOnlyElement() -> Element? {
         return count == 1 ? first : nil
+    }
+}
+
+extension CGRect {
+    var leftHalf: CGRect {
+        return CGRect(x: minX, y: minY, width: width/2, height: height)
+    }
+    var rightHalf: CGRect {
+        return CGRect(x: midX, y: minY, width: width/2, height: height)
+    }
+    func inset(by size: CGSize) -> CGRect {
+        return insetBy(dx: size.width, dy: size.height)
+    }
+    func sized(to size: CGSize) -> CGRect {
+        return CGRect(origin: origin, size: size)
+    }
+    func zoom(by scale: CGFloat) -> CGRect {
+        let newWidth = width * scale
+        let newHeight = height * scale
+        return insetBy(dx: (width - newWidth)/2, dy: (height - newHeight)/2)
+    }
+}
+extension CGPoint {
+    func offsetBy(dx xOffset: CGFloat, dy yOffset: CGFloat) -> CGPoint {
+        return CGPoint(x: x + xOffset, y: y + yOffset)
     }
 }
