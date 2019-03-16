@@ -41,6 +41,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78DD42E6223DBB1C00E1185D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				78F98C19223B59E8004A08B0 /* Extensions.swift */,
+				784FEEAE223B3D98008764A5 /* PlayingCard.swift */,
+				784FEEB1223B4EBB008764A5 /* PlayingCardDeck.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		78DD42E7223DBB5400E1185D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				78A166DC223C083000526AFC /* PlayingCardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		78DD42E8223DBB6C00E1185D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				78F10DE02239AD0C001A3A47 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		78DD42E9223DBB8900E1185D /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				78F10DDE2239AD0C001A3A47 /* AppDelegate.swift */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
 		78F10DD22239AD0C001A3A47 = {
 			isa = PBXGroup;
 			children = (
@@ -60,13 +94,11 @@
 		78F10DDD2239AD0C001A3A47 /* PlayingCard */ = {
 			isa = PBXGroup;
 			children = (
-				78F10DDE2239AD0C001A3A47 /* AppDelegate.swift */,
-				78F10DE02239AD0C001A3A47 /* ViewController.swift */,
+				78DD42E9223DBB8900E1185D /* Supporting */,
+				78DD42E8223DBB6C00E1185D /* Controller */,
 				78F10DE22239AD0D001A3A47 /* Main.storyboard */,
-				78F98C19223B59E8004A08B0 /* Extensions.swift */,
-				784FEEAE223B3D98008764A5 /* PlayingCard.swift */,
-				784FEEB1223B4EBB008764A5 /* PlayingCardDeck.swift */,
-				78A166DC223C083000526AFC /* PlayingCardView.swift */,
+				78DD42E6223DBB1C00E1185D /* Model */,
+				78DD42E7223DBB5400E1185D /* View */,
 				78F10DE52239AD11001A3A47 /* Assets.xcassets */,
 				78F10DEA2239AD11001A3A47 /* Info.plist */,
 			);
