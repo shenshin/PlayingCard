@@ -19,16 +19,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="WOh-Ei-GTN" customClass="PlayingCardView" customModule="PlayingCard" customModuleProvider="target">
-                                <rect key="frame" x="10" y="30" width="394" height="696"/>
+                                <rect key="frame" x="16" y="69" width="382" height="618"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WOh-Ei-GTN" secondAttribute="height" multiplier="1 : 1.618" id="U2w-Qt-HH0"/>
+                                    <constraint firstAttribute="width" priority="100" constant="1000" id="oxI-rE-920"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.34395960990712554" green="0.5179053964389535" blue="0.61887293781725883" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="WOh-Ei-GTN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Z8J-NV-nLM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WOh-Ei-GTN" secondAttribute="trailing" constant="10" id="bZ9-9K-sAB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WOh-Ei-GTN" secondAttribute="bottom" constant="10" id="n12-HU-d1C"/>
-                            <constraint firstItem="WOh-Ei-GTN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="w1P-oD-dUA"/>
+                            <constraint firstItem="WOh-Ei-GTN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="PhY-0t-LCN"/>
+                            <constraint firstItem="WOh-Ei-GTN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Z8J-NV-nLM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WOh-Ei-GTN" secondAttribute="trailing" constant="16" id="bZ9-9K-sAB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WOh-Ei-GTN" secondAttribute="bottom" constant="16" id="n12-HU-d1C"/>
+                            <constraint firstItem="WOh-Ei-GTN" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="vwq-Ef-jJe"/>
+                            <constraint firstItem="WOh-Ei-GTN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="w1P-oD-dUA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,6 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="66.666666666666671" y="130.43478260869566"/>
         </scene>
     </scenes>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 
 class PlayingCardView: UIView {
 
-    var rank: Int = 5 { didSet { setNeedsDisplay(); setNeedsLayout() } }
+    var rank: Int = 13 { didSet { setNeedsDisplay(); setNeedsLayout() } }
     var suit: String = "♥️" { didSet { setNeedsDisplay(); setNeedsLayout() } }
     var isFaceUp: Bool = true { didSet { setNeedsDisplay(); setNeedsLayout() } }
 
@@ -32,8 +32,11 @@ class PlayingCardView: UIView {
     override func draw(_ rect: CGRect) {
         let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         roundedRect.addClip()//это ограничивает дальнеейшее рисование границами данной фигуры
-        #colorLiteral(red: 1, green: 0.9949072003, blue: 0.8757863045, alpha: 1).setFill()
+        #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).setFill()
         roundedRect.fill()
+        if let faceCardImage = UIImage(named: rankString+suit) {
+            faceCardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+        }
     }
 
     //этот метод вызывается, когда view перерисовывается. Вызывать явно его не нужно! (как и draw)
