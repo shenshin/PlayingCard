@@ -7,20 +7,22 @@
 //
 
 import UIKit
-
+///Отображение игральной карты
 class PlayingCardView: UIView {
-
+    ///Ранг карты
     var rank: Int = 10 { didSet { setNeedsDisplay(); setNeedsLayout() } }
+    ///Масть карты
     var suit: String = "♣️" { didSet { setNeedsDisplay(); setNeedsLayout() } }
-    var isFaceUp: Bool = true { didSet { setNeedsDisplay(); setNeedsLayout() } }
-
+    ///Находится ли карта вверх лицом
+    var isFaceUp: Bool = false { didSet { setNeedsDisplay(); setNeedsLayout() } }
+    ///Знаки в правом нижнем и левом верхнем углах, представленные NSAttributedString
     private var cornerString: NSAttributedString {
         return centeredAttributedString(rankString+"\n"+suit, fontSize: cornerFontSize)
     }
     private lazy var upperleftCornerLabel = createCornerLabel()
     private lazy var lowerRightCornerLabel = createCornerLabel()
 
-    //создаёт label и делает его подвидом (дочерним видом) текущего view
+    ///Создаёт label и делает его подвидом (дочерним видом) текущего view
     private func createCornerLabel() -> UILabel {
         let label = UILabel()
         label.numberOfLines = 0
@@ -56,7 +58,7 @@ class PlayingCardView: UIView {
         setNeedsLayout()
     }
 
-    //оформление значка карты в правом нижнем и левом верхнем углах
+    ///Оформляет значок карты и помещает в правом нижнем и левом верхнем углах
     private func configureCornerLabel(_ label: UILabel) {
         label.attributedText = cornerString
         label.frame.size = CGSize.zero
@@ -64,7 +66,15 @@ class PlayingCardView: UIView {
         label.isHidden = !isFaceUp
     }
 
-    //установить параметры текста, которым отрисовывается значок карты
+    /**
+     Устанавливает параметры текста, которым отрисовывается значок карты
+     ```
+     let attemptedPipString =
+     centeredAttributedString(suit, fontSize: verticalPipRowSpacing)
+     ```
+     - Parameter string: Текст, который нужно отцентровать
+     - Parameter fontSize: Высота текста, указанная в CGFloat
+    */
     private func centeredAttributedString(_ string: String, fontSize: CGFloat) -> NSAttributedString {
         var font = UIFont.preferredFont(forTextStyle: .body).withSize(fontSize)
         //эта строка нужна чтобы если владелец телефона увеличил настройки размеров шрифтов
@@ -83,23 +93,35 @@ class PlayingCardView: UIView {
         roundedRect.addClip()//это ограничивает дальнеейшее рисование границами данной фигуры
         #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).setFill()
         roundedRect.fill()
-        if let faceCardImage = UIImage(named: rankString+suit) {
-            faceCardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+
+        // рисует карту в зависимости от того, вверх она лицом или рубашкой
+        if isFaceUp {
+            if let faceCardImage = UIImage(named: rankString+suit) {
+                faceCardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+            } else {
+                drawPips()
+            }
         } else {
-            drawPips()
+            if let cardBackImage = UIImage(named: "cardback") {
+                cardBackImage.draw(in: bounds)
+            }
         }
     }
 
-    //отрисовка значков по центру карты для карт-цифр
+    ///Рисует значки по центру карты для карт-цифр
     func drawPips() {
         //число значков в ряду для номера карты, кот. соотв. номеру элемента массива
         let pipsPerRowForRank = [[0], [1], [1, 1], [1, 1, 1], [2, 2], [2, 1, 2],
         [2, 2, 2], [2, 1, 2, 2], [2, 2, 2, 2], [2, 2, 1, 2, 2], [2, 2, 2, 2, 2]]
 
         func createPipString(thatFits pipRect: CGRect) -> NSAttributedString {
+            ///Максимальное число значков по вертикали
             let maxVerticalPipCount = CGFloat(pipsPerRowForRank.reduce(0) {max($1.count, $0)})
+            ///Максимальное число значков по горизонтали
             let maxHorizontalPipCount = CGFloat(pipsPerRowForRank.reduce(0) {max($1.max() ?? 0, $0)})
+            ///Расстояние между рядами значков по вертикали
             let verticalPipRowSpacing = pipRect.size.height / maxVerticalPipCount
+
             let attemptedPipString = centeredAttributedString(suit, fontSize: verticalPipRowSpacing)
             let probablyOkeyPipStringFontSize = verticalPipRowSpacing /
                 (attemptedPipString.size().height / verticalPipRowSpacing)//скобка не на том месте была
