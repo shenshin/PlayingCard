@@ -18,6 +18,10 @@ struct PlayingCardDeck {
         }
     }
     mutating func draw() -> PlayingCard? {
-        return deck.remove(at: deck.count.arc4random)
+        if !deck.isEmpty {
+            return deck.remove(at: deck.count.arc4random)
+        } else {
+            return nil
+        }
     }
 }

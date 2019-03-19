@@ -8,19 +8,40 @@
 
 import UIKit
 ///Отображение игральной карты
+//@IBDesignable
 class PlayingCardView: UIView {
-    ///Ранг карты
-    var rank: Int = 10 { didSet { setNeedsDisplay(); setNeedsLayout() } }
-    ///Масть карты
+    //@IBInspectable
+    /// Ранг карты
+    var rank: Int = 8 { didSet { setNeedsDisplay(); setNeedsLayout() } }
+    //@IBInspectable
+    /// Масть карты
     var suit: String = "♣️" { didSet { setNeedsDisplay(); setNeedsLayout() } }
-    ///Находится ли карта вверх лицом
-    var isFaceUp: Bool = false { didSet { setNeedsDisplay(); setNeedsLayout() } }
+    //@IBInspectable
+    /// Находится ли карта вверх лицом
+    var isFaceUp: Bool = true { didSet { setNeedsDisplay(); setNeedsLayout() } }
+    /// Текущий масшаб отбражения карты
+    var faceCardScale: CGFloat = SizeRatio.faceCardImageSizeToBoundsSize {
+        didSet {
+            setNeedsDisplay(); setNeedsLayout() //setNeedsLayout() возможно нужно удалить
+        }
+    }
+
     ///Знаки в правом нижнем и левом верхнем углах, представленные NSAttributedString
     private var cornerString: NSAttributedString {
         return centeredAttributedString(rankString+"\n"+suit, fontSize: cornerFontSize)
     }
     private lazy var upperleftCornerLabel = createCornerLabel()
     private lazy var lowerRightCornerLabel = createCornerLabel()
+    /// Изменяет масштаб изображения на карте с картинкой
+    ///- Parameter recognizer: Распознаватель жеста масштабирования
+    @objc func adjustFaceCardScale(byHandlingGestureRecognizerBy recognizer: UIPinchGestureRecognizer) {
+        switch recognizer.state {
+        case .changed, .ended:
+            faceCardScale *= recognizer.scale
+            recognizer.scale = 1.0
+        default: break
+        }
+    }
 
     ///Создаёт label и делает его подвидом (дочерним видом) текущего view
     private func createCornerLabel() -> UILabel {
@@ -96,13 +117,17 @@ class PlayingCardView: UIView {
 
         // рисует карту в зависимости от того, вверх она лицом или рубашкой
         if isFaceUp {
-            if let faceCardImage = UIImage(named: rankString+suit) {
-                faceCardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+            if let faceCardImage = UIImage(named: rankString+suit,
+                                           in: Bundle(for: self.classForCoder),
+                                           compatibleWith: traitCollection) {
+                faceCardImage.draw(in: bounds.zoom(by: faceCardScale))
             } else {
                 drawPips()
             }
         } else {
-            if let cardBackImage = UIImage(named: "cardback") {
+            if let cardBackImage = UIImage(named: "cardback",
+                                           in: Bundle(for: self.classForCoder),
+                                           compatibleWith: traitCollection) {
                 cardBackImage.draw(in: bounds)
             }
         }

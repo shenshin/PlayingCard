@@ -78,6 +78,7 @@
 		78F10DD22239AD0C001A3A47 = {
 			isa = PBXGroup;
 			children = (
+				78F10DE22239AD0D001A3A47 /* Main.storyboard */,
 				78F10DDD2239AD0C001A3A47 /* PlayingCard */,
 				78F10DDC2239AD0C001A3A47 /* Products */,
 			);
@@ -96,7 +97,6 @@
 			children = (
 				78DD42E9223DBB8900E1185D /* Supporting */,
 				78DD42E8223DBB6C00E1185D /* Controller */,
-				78F10DE22239AD0D001A3A47 /* Main.storyboard */,
 				78DD42E6223DBB1C00E1185D /* Model */,
 				78DD42E7223DBB5400E1185D /* View */,
 				78F10DE52239AD11001A3A47 /* Assets.xcassets */,
